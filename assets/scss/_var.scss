@@ -1,0 +1,16 @@
+@forward "helpers"; // Makes helpers available in each component when only _var file is loaded.
+
+@use "helpers" as *; // Use helpers file in this _var file. Forward does not do that.
+
+/// Header height of the website.
+
+/// Footer height of the website.
+
+// ----- Colors used in the website. -----
+
+// * NOTE 1:
+// Number at the end of the variable name denotes the opacity of the particular color.
+// * Example: $color-primary-10 denotes 10% opacity of the $color-primary.
+
+
+// ----- End of colors -----

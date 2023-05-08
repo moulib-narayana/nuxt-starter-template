@@ -1,0 +1,21 @@
+@use "reset";
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: $center-block-max-width;
+}
+
+button {
+    font-family: inherit !important;
+}
+
+.page {
+    padding: rem(30) rem(24) rem(20) rem(24);
+
+    margin-top: rem(0);
+
+    @include tab-screen {
+        padding: rem(40) rem(36) rem(40) rem(36);
+    }
+}

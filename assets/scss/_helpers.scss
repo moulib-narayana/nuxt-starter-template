@@ -1,0 +1,54 @@
+@use "sass:math";
+
+/// Converts the units of any size from `px` to `em`.
+///
+/// @param { number} $size.
+///     The number is divided by 16.
+///
+/// @return the size in `em`.
+@function em($size, $context: 16) {
+    @return math.div($size/$context) * 1em;
+}
+
+/// Converts the units of any size from `px` to `rem`.
+///
+/// * NOTE: Same function is replicated in javascript in utilities/helpers.ts.
+/// * Any changes here should be reflected there.
+///
+/// @param { number} $size.
+///     The number is divided by 16.
+///
+/// @return the size in `em`.
+@function rem($pxsize, $context: 16) {
+    @return math.div($pxsize, $context) * 1rem;
+}
+
+/// Converts a color into rgb and adds opacity if needed.
+///
+/// @param { color } $color.
+///     This color is broken down into it's RGB components.
+///
+/// @param { opacity } $opacity
+///     This is added to the given color. Ranges from 0 to 1.
+///
+/// @return the `RGBA`.
+@function colorToRgba($color, $opacity: 1) {
+    @return rgba(red($color), blue($color), green($color), $opacity);
+}
+
+
+// ----- Media Queries. -----
+
+@mixin tab-screen {
+    @media (min-width: '720px') {
+        @content;
+    }
+}
+
+@mixin web-screen {
+    @media (min-width: '1025px') {
+        @content;
+    }
+}
+
+// ----- END Media Queries. -----
