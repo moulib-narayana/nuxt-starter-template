@@ -1,5 +1,8 @@
 import { ElMessage, ElMessageBox, ElNotification } from "element-plus";
+import { H3Event, createError } from "h3";
+import { FetchError } from "ofetch";
 import { Router } from "vue-router";
+import { HttpMethod } from "~/composables/useMyFetch";
 
 export const inDevelopmentMode = () => process.env.NODE_ENV === "development";
 
@@ -12,6 +15,65 @@ export const getTotalCountHeader = (headers: Headers | null): number | null => {
    if (!headerValue) return null;
 
    return parseInt(headerValue);
+};
+
+export const parseJwt = (token: string): { user_type: string } => {
+   return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
+};
+
+export const sendServerRequest = (
+   path: string,
+   method: HttpMethod,
+   event: H3Event
+): Function => {
+   const staffPrefix = "/staff/v1";
+
+   const token = event.node.req.headers.authorization;
+
+   const config = useRuntimeConfig();
+
+   if (!token || !token.startsWith("Bearer "))
+      return () =>
+         sendError(
+            event,
+            createError({
+               statusCode: 401,
+               data: "No auth token found.",
+            })
+         );
+
+   const payload = parseJwt(token.split(" ")[1]);
+
+   if (!payload)
+      return () =>
+         sendError(
+            event,
+            createError({
+               statusCode: 401,
+               data: "Payload could not be decoded from Auth Token.",
+            })
+         );
+
+   let url = staffPrefix + path;
+
+   url = config.public.apiBaseUrl + url;
+
+   return () =>
+      $fetch
+         .raw(url.replace("localhost", "127.0.0.1"), {
+            method: method,
+            headers: {
+               Authorization: token,
+            },
+         })
+         .then((res) => {
+            return res._data;
+         })
+         .catch((error) => {
+            console.log("server request error");
+            console.log(error);
+            return sendError(event, createError(error as FetchError));
+         });
 };
 
 // ---------------- End of API Related Helper functions ----------------

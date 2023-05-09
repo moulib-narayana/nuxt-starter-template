@@ -1,13 +1,17 @@
 @use "reset";
 
+// TODO: If you want to use the fonts. Uncomment the below section and modify as per your requirement.
+
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// body {
+//     font-family: "Poppins", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+// }
+
 .container {
     width: 90%;
     margin: 0 auto;
     max-width: $center-block-max-width;
-}
-
-button {
-    font-family: inherit !important;
 }
 
 .page {
@@ -18,4 +22,8 @@ button {
     @include tab-screen {
         padding: rem(40) rem(36) rem(40) rem(36);
     }
+}
+
+button {
+    font-family: inherit !important;
 }

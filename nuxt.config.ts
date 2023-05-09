@@ -36,7 +36,8 @@ export default defineNuxtConfig({
       },
    },
 
-   css: ["~/assets/scss/app.scss"],
+   //TODO: Remove element plus part if you are not using it.
+   css: ["~/assets/scss/element/index.scss", "~/assets/scss/app.scss"],
 
    modules: ["@vueuse/nuxt", "@nuxt-alt/auth", "@pinia/nuxt"],
 
@@ -44,8 +45,9 @@ export default defineNuxtConfig({
       css: {
          preprocessorOptions: {
             scss: {
+               //TODO: Remove element plus part if you are not using it.
                additionalData:
-                  '@use "~/assets/scss/_var.scss" as *;',
+                  '@use "~/assets/scss/element/_var.scss" as element; @use "~/assets/scss/_var.scss" as *;',
             },
          },
       },
@@ -72,11 +74,13 @@ export default defineNuxtConfig({
             endpoints: {
                login: false,
                refresh: {
+                  //TODO: Correct the URL
                   url: "/refresh-url",
                   method: "post",
                   tokenRequired: true,
                },
                user: {
+                  //TODO: Correct the URL
                   url: "/me-url",
                   method: "get",
                },

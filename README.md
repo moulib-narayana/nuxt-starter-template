@@ -1,11 +1,16 @@
-# Nuxt Web App.
+# Starter Template for nConnect Web Apps.
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more about Nuxt3.
+
+## Important Notes before starting the project:
+- Remove this note when you start your project and change the heading of this readme file.
+- Check for TODOs. (Use [TODO Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree) for easily find out TODOs).
 
 # Index
 
 1. [Pre-requisites](#pre-requisites)
 2. [Project Setup](#project-setup)
+3. [Workspace Setup](#workspace-setup)
 3. [Running the Project](#running-the-project)
 4. [A note for mac users](#special-note-for-mac-users)
 5. [Generate Typescript Interfaces](#generate-typescript-interfaces-from-swagger)
@@ -55,6 +60,12 @@ yarn upgrade-interactive --latest
 However, it is already included in the scripts section of [package.json](https://github.com/BunnyMan1/reach_disha_web/blob/main/package.json)
 
 <br />
+
+# Workspace Setup
+
+## Extensions:
+- [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+- [TODO Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 
 # Running the project
 
