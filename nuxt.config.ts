@@ -71,21 +71,20 @@ export default defineNuxtConfig({
             user: {
                property: false,
             },
-            endpoints: {
-               login: false,
-               refresh: {
-                  //TODO: Correct the URL
-                  url: "/refresh-url",
-                  method: "post",
-                  tokenRequired: true,
-               },
-               user: {
-                  //TODO: Correct the URL
-                  url: "/me-url",
-                  method: "get",
-               },
-               logout: false,
-            },
+            //TODO: Uncomment with correct endpoints
+            // endpoints: {
+            //    login: false,
+            //    refresh: {
+            //       url: "/refresh-url",
+            //       method: "post",
+            //       tokenRequired: true,
+            //    },
+            //    user: {
+            //       url: "/me-url",
+            //       method: "get",
+            //    },
+            //    logout: false,
+            // },
             autoLogout: true,
             redirect: {
                login: loginPagePath,
